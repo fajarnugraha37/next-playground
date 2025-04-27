@@ -1,0 +1,29 @@
+# .dockerignore
+
+# Git files
+.git
+.gitignore
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Dependency directories (these are handled by the build stages)
+node_modules
+
+# Next.js build output (handled by build stages)
+.next
+
+# Environment variables file (should not be in the image)
+.env*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.js
+*.spec.js
+
+# Log files
+*.log

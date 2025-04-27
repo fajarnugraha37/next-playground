@@ -3,7 +3,7 @@ import { UsernamePassword, UsernamePasswordSchema } from "../definitions/credent
 import { UserComplete, UserCompleteSchema } from "../definitions/user-complete.definition";
 import { ApiUtility } from "../utils";
 
-export class DummyJsonApi {
+export class AuthApi {
   private readonly apiUtility: ApiUtility;
 
   constructor(baseUrl: string = "https://dummyjson.com") {

@@ -1,4 +1,4 @@
-import { unknown, z } from "zod";
+import { z } from "zod";
 import { ApiResponse, HttpMethod } from "./types.util";
 
 // Error Type

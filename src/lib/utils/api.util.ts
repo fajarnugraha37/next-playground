@@ -1,12 +1,14 @@
-import { z } from "zod";
+import { unknown, z } from "zod";
 import { ApiResponse, HttpMethod } from "./types.util";
 
 // Error Type
 class ApiError extends Error {
   message: string;
   status?: number;
-  constructor(message: string, status?: number) {
-    super(message);
+  constructor(message: string, status?: number, cause?: unknown) {
+    super(message, {
+      cause: cause
+    });
     this.message = message;
     this.status = status;
   }
@@ -60,7 +62,8 @@ export class ApiUtility {
       if (!response.ok) {
         throw new ApiError(
           `HTTP error! Status: ${response.status} ${response.statusText}`,
-          response.status
+          response.status,
+          await response.text()
         );
       }
 
@@ -73,13 +76,13 @@ export class ApiUtility {
       };
     } catch (error) {
       if (error instanceof z.ZodError) {
-        throw new ApiError(`Validation error: ${error.message}`);
+        throw new ApiError(`Validation error: ${error.message}`, 400, error);
       }
       
-      console.error("unexpected api call error: ", error);
+      console.error(`unexpected api call to ${method} ${this.baseUrl}${endpoint} error: `, error);
       throw error instanceof ApiError
         ? error
-        : new ApiError("Unknown error occurred");
+        : new ApiError("Unknown error occurred", 500, error);
     }
   }
 }

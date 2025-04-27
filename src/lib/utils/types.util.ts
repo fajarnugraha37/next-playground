@@ -30,7 +30,6 @@ export type HttpMethod = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
 export interface ApiResponse<T> {
   data: T;
   status: number;
-  error?: string;
 }
 
 interface NextCookiesRequest extends Request {

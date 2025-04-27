@@ -1,39 +1,37 @@
 import {
   LoginRequest,
-  LoginRequestHelper,
+  LoginRequestSchema,
   LoginResponse,
-  LoginResponseHelper,
+  LoginResponseSchema,
   TokenResponse,
-  TokenResponseHelper,
+  TokenResponseSchema,
   UserResponse,
-  UserResponseHelper,
+  UserResponseSchema,
 } from "@/lib/vm";
+import { ApiUtility } from "../utils";
 
 export class DummyJsonApi {
-  constructor(private readonly basePath: string = "https://dummyjson.com") {}
+  private readonly apiUtility: ApiUtility;
+
+  constructor(baseUrl: string = "https://dummyjson.com") {
+    this.apiUtility = new ApiUtility(baseUrl);
+  }
 
   public async login(
     credential: LoginRequest
   ): Promise<[LoginResponse | null, unknown | null]> {
-    const {
-      data: credData,
-      success: credSuccess,
-      error: credError,
-    } = await LoginRequestHelper.validateAsync(credential);
-    if (!credSuccess) return [null, credError];
-
     try {
-      const response = await fetch(`${this.basePath}/auth/login`, {
+      const { data } = await this.apiUtility.fetchApi({
+        requestSchema: LoginRequestSchema,
+        responseSchema: LoginResponseSchema,
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credData),
-        credentials: "include",
+        endpoint: "/auth/login",
+        requestData: credential,
+        options: {
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        },
       });
-      const json = await response.json();
-      const { data, success, error } = await LoginResponseHelper.validateAsync(
-        json
-      );
-      if (!success) return [null, error];
 
       return [data, null];
     } catch (error) {
@@ -45,18 +43,17 @@ export class DummyJsonApi {
     accessToken: string
   ): Promise<[UserResponse | null, unknown | null]> {
     try {
-      const response = await fetch(`${this.basePath}/auth/me`, {
+      const { data } = await this.apiUtility.fetchApi({
+        responseSchema: UserResponseSchema,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+        endpoint: "/auth/me",
+        options: {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: "include",
         },
-        credentials: "include",
       });
-      const json = await response.json();
-      const { data, success, error } = await UserResponseHelper.validateAsync(
-        json
-      );
-      if (!success) return [null, error];
 
       return [data, null];
     } catch (error) {
@@ -68,20 +65,19 @@ export class DummyJsonApi {
     refreshToken: string
   ): Promise<[TokenResponse | null, unknown | null]> {
     try {
-      const response = await fetch(`${this.basePath}/auth/refresh`, {
+      const { data } = await this.apiUtility.fetchApi({
+        responseSchema: TokenResponseSchema,
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+        endpoint: "/auth/refresh",
+        requestData: {
           refreshToken: refreshToken, // Optional, if not provided, the server will use the cookie
           expiresInMins: 30, // optional (FOR ACCESS TOKEN), defaults to 60
-        }),
-        credentials: "include",
+        },
+        options: {
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        },
       });
-      const json = await response.json();
-      const { data, success, error } = await TokenResponseHelper.validateAsync(
-        json
-      );
-      if (!success) return [null, error];
 
       return [data, null];
     } catch (error) {

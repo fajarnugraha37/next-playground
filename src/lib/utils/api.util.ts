@@ -35,13 +35,13 @@ export class ApiUtility {
     method?: HttpMethod;
     responseSchema: TResponse;
     requestSchema?: TRequest;
-    requestData?: TRequest extends z.ZodTypeAny ? z.infer<TRequest> : null;
+    requestData?: TRequest extends z.ZodTypeAny ? z.infer<TRequest> : object;
     options?: RequestInit;
   }): Promise<ApiResponse<z.infer<TResponse>>> {
     try {
       // Validate request data if provided
       if (requestSchema && requestData) {
-        requestSchema.parse(requestData);
+        await requestSchema.parseAsync(requestData);
       }
 
       const url = `${this.baseUrl}${endpoint}`;
@@ -59,7 +59,7 @@ export class ApiUtility {
 
       if (!response.ok) {
         throw new ApiError(
-          `HTTP error! Status: ${response.status}`,
+          `HTTP error! Status: ${response.status} ${response.statusText}`,
           response.status
         );
       }
@@ -75,6 +75,8 @@ export class ApiUtility {
       if (error instanceof z.ZodError) {
         throw new ApiError(`Validation error: ${error.message}`);
       }
+      
+      console.error("unexpected api call error: ", error);
       throw error instanceof ApiError
         ? error
         : new ApiError("Unknown error occurred");

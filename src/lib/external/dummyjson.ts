@@ -1,13 +1,6 @@
-import {
-  LoginRequest,
-  LoginRequestSchema,
-  LoginResponse,
-  LoginResponseSchema,
-  TokenResponse,
-  TokenResponseSchema,
-  UserResponse,
-  UserResponseSchema,
-} from "@/lib/vm";
+import { Token, TokenSchema, User, UserSchema } from "../definitions";
+import { UsernamePassword, UsernamePasswordSchema } from "../definitions/credential.definition";
+import { UserComplete, UserCompleteSchema } from "../definitions/user-complete.definition";
 import { ApiUtility } from "../utils";
 
 export class DummyJsonApi {
@@ -18,12 +11,12 @@ export class DummyJsonApi {
   }
 
   public async login(
-    credential: LoginRequest
-  ): Promise<[LoginResponse | null, unknown | null]> {
+    credential: UsernamePassword
+  ): Promise<[UserComplete | null, unknown | null]> {
     try {
       const { data } = await this.apiUtility.fetchApi({
-        requestSchema: LoginRequestSchema,
-        responseSchema: LoginResponseSchema,
+        requestSchema: UsernamePasswordSchema,
+        responseSchema: UserCompleteSchema,
         method: "POST",
         endpoint: "/auth/login",
         requestData: credential,
@@ -41,10 +34,10 @@ export class DummyJsonApi {
 
   public async me(
     accessToken: string
-  ): Promise<[UserResponse | null, unknown | null]> {
+  ): Promise<[User | null, unknown | null]> {
     try {
       const { data } = await this.apiUtility.fetchApi({
-        responseSchema: UserResponseSchema,
+        responseSchema: UserSchema,
         method: "GET",
         endpoint: "/auth/me",
         options: {
@@ -63,10 +56,10 @@ export class DummyJsonApi {
 
   public async refresh(
     refreshToken: string
-  ): Promise<[TokenResponse | null, unknown | null]> {
+  ): Promise<[Token | null, unknown | null]> {
     try {
       const { data } = await this.apiUtility.fetchApi({
-        responseSchema: TokenResponseSchema,
+        responseSchema: TokenSchema,
         method: "POST",
         endpoint: "/auth/refresh",
         requestData: {

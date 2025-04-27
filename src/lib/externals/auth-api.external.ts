@@ -1,6 +1,13 @@
-import { Token, TokenSchema, User, UserSchema } from "../definitions";
-import { UsernamePassword, UsernamePasswordSchema } from "../definitions/credential.definition";
-import { UserComplete, UserCompleteSchema } from "../definitions/user-complete.definition";
+import {
+  Token,
+  TokenSchema,
+  User,
+  UserComplete,
+  UserCompleteSchema,
+  UsernamePassword,
+  UsernamePasswordSchema,
+  UserSchema,
+} from "../definitions";
 import { ApiUtility } from "../utils";
 
 export class AuthApi {
@@ -32,9 +39,7 @@ export class AuthApi {
     }
   }
 
-  public async me(
-    accessToken: string
-  ): Promise<[User | null, unknown | null]> {
+  public async me(accessToken: string): Promise<[User | null, unknown | null]> {
     try {
       const { data } = await this.apiUtility.fetchApi({
         responseSchema: UserSchema,

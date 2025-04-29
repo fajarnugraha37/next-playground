@@ -1,13 +1,13 @@
+"use client";
 import { useContext } from "react";
 import { MessagingStoreContext, MessagingStoreSelector } from "./messaging-store.provider";
-import { createMessagingStore } from "./messaging.store";
 import { useStore } from "zustand";
 
 export function useMessaging<T>(selector: MessagingStoreSelector<T>): T {
   const storeContext = useContext(MessagingStoreContext);
 
   if (!storeContext) {
-    throw new Error(`storeContextStore must be used within CounterStoreProvider`);
+    throw new Error(`messagingContextStore must be used within CounterStoreProvider`);
   }
 
   return useStore(storeContext, selector);

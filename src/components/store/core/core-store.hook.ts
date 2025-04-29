@@ -1,45 +1,31 @@
 "use client";
-
-import { atom } from "nanostores";
-import { useStore } from "@nanostores/react";
+import { useContext } from "react";
+import { useStore } from "zustand";
 import { useEffect, useCallback } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-export interface LocationState {
-  hostname: string;
-  path: string;
-  query: Record<string, any>;
+import { CoreStoreContext, CoreStoreSelector } from "./core-store.provider";
+
+export function useCore<T>(selector: CoreStoreSelector<T>): T {
+  const storeContext = useContext(CoreStoreContext);
+
+  if (!storeContext) {
+    throw new Error(
+      `coreContextStore must be used within CounterStoreProvider`
+    );
+  }
+
+  return useStore(storeContext, selector);
 }
-
-export const $location = atom<LocationState>({
-  hostname: "",
-  path: "",
-  query: {},
-});
-
-const getCurrentLocation = (): LocationState => {
-  const hostname = window.location.hostname ?? "";
-  const path = window.location.pathname ?? "";
-  const queryParams = new URLSearchParams(window.location.search ?? "");
-  const query: Record<string, any> = {};
-  queryParams.forEach((value, key) => (query[key] = value));
-
-  return {
-    hostname,
-    path,
-    query,
-  };
-};
 
 export function useLocationListener() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const updateLocation = useCore((state) => state.updateLocation);
+  const location = useCore((state) => state.location);
 
-  const updateLocationState = useCallback(() => {
-    const newState = getCurrentLocation();
-    $location.set(newState);
-  }, []);
+  const updateLocationState = useCallback(() => updateLocation(), []);
 
   useEffect(() => {
     // Initial update
@@ -75,7 +61,7 @@ export function useLocationListener() {
   );
 
   return {
-    locationState: useStore($location),
+    locationState: location,
     navigate,
   };
 }

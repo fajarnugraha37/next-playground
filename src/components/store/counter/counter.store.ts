@@ -1,4 +1,3 @@
-"use client";
 import { createStore } from "zustand";
 
 export type CounterState = {

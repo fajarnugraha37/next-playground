@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useNotification } from "../store";
 import "./NotificationDemo.css";
 
-export function NotificationDemoPage() {
+export function NotificationDemo() {
   const { notifyInfo, notifyWarning, notifyError, notifySuccess } = useNotification();
   const router = useRouter();
 

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { NotificationType, useNotificationStore } from "../store";
+import { NotificationType, useMessaging } from "../store";
 
 // Tailwind classes based on notification type
 const typeStyles: Record<NotificationType, string> = {
@@ -19,7 +19,8 @@ const buttonStyles: Record<NotificationType, string> = {
 
 // Notification Component
 export function Notification() {
-  const { queue, removeNotification } = useNotificationStore();
+  const queue = useMessaging(state => state.queue);
+  const removeNotification = useMessaging(state => state.removeNotification);
   const currentNotification = queue[0]; // Show the first notification in the queue
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 "use client";
-
-import { PopupType, usePopupStore } from "../../components/store";
+import { PopupType, useMessaging } from "../../components/store";
 
 const typeStyles: Record<PopupType, string> = {
   info: "border-blue-500 bg-blue-50 dark:bg-blue-900",
@@ -19,15 +18,13 @@ const buttonStyles: Record<PopupType, string> = {
 };
 
 export function Popup() {
-  const {
-    isOpen,
-    type,
-    title,
-    message,
-    primaryButton,
-    secondaryButton,
-    closePopup,
-  } = usePopupStore();
+  const isOpen = useMessaging(state => state.isOpen);
+  const type = useMessaging(state => state.type);
+  const title = useMessaging(state => state.title);
+  const message = useMessaging(state => state.message);
+  const primaryButton = useMessaging(state => state.primaryButton);
+  const secondaryButton = useMessaging(state => state.secondaryButton);
+  const closePopup = useMessaging(state => state.closePopup);
 
   if (!isOpen) return null;
 

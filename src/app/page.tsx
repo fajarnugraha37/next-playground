@@ -1,4 +1,4 @@
-import { Message, Notification, Popup } from "@/components/custom";
+import { Info, Notification, Popup } from "@/components/custom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -22,7 +22,7 @@ export default async function Home() {
 function HomeComponent() {
   return (
     <>
-      <Message />
+      <Info />
       <Notification />
       <Popup />
       <div className="flex flex-col min-h-screen">

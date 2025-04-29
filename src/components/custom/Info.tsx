@@ -1,48 +1,49 @@
 "use client";
 import { useEffect } from "react";
-import { MessageType, useMessageStore } from "../store";
+import { InfoType, useMessaging } from "../store";
 
-// Tailwind classes based on message type
-const typeStyles: Record<MessageType, string> = {
+// Tailwind classes based on info type
+const typeStyles: Record<InfoType, string> = {
   info: "bg-black border-blue-500 text-blue-400",
   warning: "bg-black border-yellow-500 text-yellow-400",
   error: "bg-black border-red-500 text-red-400",
   success: "bg-black border-green-500 text-green-400",
 };
 
-const buttonStyles: Record<MessageType, string> = {
+const buttonStyles: Record<InfoType, string> = {
   info: "bg-blue-600 hover:bg-blue-700 text-white",
   warning: "bg-yellow-600 hover:bg-yellow-700 text-white",
   error: "bg-red-600 hover:bg-red-700 text-white",
   success: "bg-green-600 hover:bg-green-700 text-white",
 };
 
-// Message Component
-export function Message() {
-  const { message, hideMessage } = useMessageStore();
+// info Component
+export function Info() {
+  const info = useMessaging(state => state.info);
+  const hideInfo = useMessaging(state => state.hideInfo);
 
   useEffect(() => {
-    if (message?.duration) {
+    if (info?.duration) {
       const timer = setTimeout(() => {
-        hideMessage();
-      }, message.duration);
+        hideInfo();
+      }, info.duration);
       return () => clearTimeout(timer);
     }
-  }, [message, hideMessage]);
+  }, [info, hideInfo]);
 
-  if (!message) return null;
+  if (!info) return null;
 
   return (
     <div
       className={`w-full p-4 border-l-4 ${
-        typeStyles[message.type]
+        typeStyles[info.type]
       } flex items-center justify-between shadow-sm animate-fade-in dark:bg-opacity-80 dark:${typeStyles[
-        message.type
+        info.type
       ].replace("50", "900")}`}
     >
       <div className="flex items-center">
         {/* Icon */}
-        {message.type === "info" && (
+        {info.type === "info" && (
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
@@ -57,7 +58,7 @@ export function Message() {
             />
           </svg>
         )}
-        {message.type === "warning" && (
+        {info.type === "warning" && (
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
@@ -72,7 +73,7 @@ export function Message() {
             />
           </svg>
         )}
-        {message.type === "error" && (
+        {info.type === "error" && (
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
@@ -87,7 +88,7 @@ export function Message() {
             />
           </svg>
         )}
-        {message.type === "success" && (
+        {info.type === "success" && (
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
@@ -103,25 +104,25 @@ export function Message() {
           </svg>
         )}
         {/* Text */}
-        <p className="text-sm">{message.text}</p>
+        <p className="text-sm">{info.text}</p>
       </div>
       {/* Action Button or Close */}
       <div className="flex items-center space-x-2">
-        {message.action && (
+        {info.action && (
           <button
             onClick={() => {
-              message.action?.onClick();
-              hideMessage();
+              info.action?.onClick();
+              hideInfo();
             }}
             className={`px-3 py-1 text-sm font-medium rounded-md ${
-              buttonStyles[message.type]
+              buttonStyles[info.type]
             }`}
           >
-            {message.action.text}
+            {info.action.text}
           </button>
         )}
         <button
-          onClick={hideMessage}
+          onClick={hideInfo}
           className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
         >
           <svg

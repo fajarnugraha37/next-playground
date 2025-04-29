@@ -3,7 +3,7 @@ export * from './FancyLoading';
 export * from './Footer';
 export * from './Hero';
 export * from './Loading';
-export * from './Message';
+export * from './Info';
 export * from './NotFound';
 export * from './Notification';
 export * from './Popup';

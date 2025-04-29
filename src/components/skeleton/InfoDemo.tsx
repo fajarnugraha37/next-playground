@@ -1,10 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useMessage } from "../store";
-import "./MessageDemo.css";
+import { useInfo } from "../store";
+import "./InfoDemo.css";
 
-export function MessageDemo() {
-  const { showInfo, showWarning, showError, showSuccess } = useMessage();
+export function InfoDemo() {
+  const { showInfo, showWarning, showError, showSuccess } = useInfo();
   const router = useRouter();
 
   return (

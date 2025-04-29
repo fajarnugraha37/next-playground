@@ -1,3 +1,4 @@
+export * from './counter.store';
 export * from './location.store';
 export * from './message.store';
 export * from './notification.store';

@@ -1,3 +1,4 @@
+export * from './Counter';
 export * from './FancyLoading';
 export * from './Footer';
 export * from './Hero';

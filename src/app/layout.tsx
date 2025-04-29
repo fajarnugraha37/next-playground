@@ -6,7 +6,7 @@ import { Menu } from "lucide-react";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import "../styles/globals.css";
 import { TransitionMain } from "@/components/custom";
 
@@ -87,8 +87,11 @@ function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
+              <SheetHeader hidden={true}>
+                <SheetTitle>Menu</SheetTitle>
+              </SheetHeader>
               <SheetContent side="right">
-                <nav className="grid gap-6 text-lg font-medium">
+                <nav className="grid gap-6 text-lg font-medium p-4 py-12">
                   <Link href="/" className="hover:text-primary">
                     Home
                   </Link>

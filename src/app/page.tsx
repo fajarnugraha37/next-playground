@@ -1,8 +1,4 @@
-import {
-  Message,
-  Notification,
-  Popup,
-} from "@/components/custom";
+import { Message, Notification, Popup } from "@/components/custom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -15,7 +11,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <HomeComponent />

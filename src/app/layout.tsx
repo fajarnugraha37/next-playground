@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import "../styles/globals.css";
+import { TransitionMain } from "@/components/custom";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,9 @@ export default function RootLayout({
         >
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <TransitionMain className="flex-1">
+              {children}
+            </TransitionMain>
           </div>
         </ThemeProvider>
       </body>

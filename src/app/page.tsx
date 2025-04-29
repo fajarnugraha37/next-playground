@@ -36,7 +36,8 @@ function HomeComponent() {
         <TestimonialsSection />
 
         {/* CTA Section */}
-
+        <CtaSection />
+        
         {/* Footer */}
         <Footer />
       </div>
@@ -46,15 +47,15 @@ function HomeComponent() {
 
 function HeroSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-white to-gray-50">
+    <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-white to-gray-50">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-          <div className="flex flex-col justify-center space-y-4">
+          <div className="flex flex-col items-center justify-center space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+              <h1 className="text-center text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Transform Your Digital Experience
               </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-xl">
+              <p className="text-center text-gray-500 md:text-xl">
                 We create innovative digital solutions that help businesses
                 thrive in the modern world.
               </p>
@@ -93,7 +94,7 @@ function HeroSection() {
 
 function FeaturesSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+    <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -146,7 +147,7 @@ function FeaturesSection() {
 
 function TestimonialsSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+    <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-gray-50">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -198,7 +199,7 @@ function TestimonialsSection() {
 
 function CtaSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+    <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

@@ -4,7 +4,7 @@ interface CardSkeletonProps {
   children?: React.ReactNode;
 }
 
-export default function CardSkeleton({ children }: CardSkeletonProps) {
+export function CardSkeleton({ children }: CardSkeletonProps) {
   return (
     <div className="rounded-xl border bg-card text-card-foreground shadow">
       <div className="p-6 flex flex-col space-y-4">

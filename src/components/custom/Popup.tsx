@@ -18,7 +18,7 @@ const buttonStyles: Record<PopupType, string> = {
     "bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600",
 };
 
-export default function Popup() {
+export function Popup() {
   const {
     isOpen,
     type,

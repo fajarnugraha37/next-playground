@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { usePopup } from "../store";
 
-export default function PopupDemo() {
+export function PopupDemo() {
   const { showInfo, showWarning, showError, showSuccess } = usePopup();
   const router = useRouter();
 

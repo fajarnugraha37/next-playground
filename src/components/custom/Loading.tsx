@@ -6,7 +6,7 @@ interface LoadingProps {
   isFull?: boolean;
 }
 
-export default function Loading(props: LoadingProps) {
+export function Loading(props: LoadingProps) {
   if (props.isFull) {
     return <FullLoading {...props} />;
   }

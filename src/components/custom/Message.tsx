@@ -16,8 +16,9 @@ const buttonStyles: Record<MessageType, string> = {
   error: "bg-red-600 hover:bg-red-700 text-white",
   success: "bg-green-600 hover:bg-green-700 text-white",
 };
+
 // Message Component
-export default function Message() {
+export function Message() {
   const { message, hideMessage } = useMessageStore();
 
   useEffect(() => {

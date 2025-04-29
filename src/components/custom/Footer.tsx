@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer: React.FC<{
+export const Footer: React.FC<{
     // addTodo: (text: string) => void;
     // ButtonComponent: React.FC<{ onClick: () => void }>;  // Here we wiil be expecting a Button as a prop
     children?: React.ReactNode;
@@ -70,5 +70,3 @@ const Footer: React.FC<{
     </footer> 
   );
 };
-
-export default Footer;

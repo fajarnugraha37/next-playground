@@ -18,7 +18,7 @@ const buttonStyles: Record<NotificationType, string> = {
 };
 
 // Notification Component
-export default function Notification() {
+export function Notification() {
   const { queue, removeNotification } = useNotificationStore();
   const currentNotification = queue[0]; // Show the first notification in the queue
 

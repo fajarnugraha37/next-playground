@@ -3,7 +3,7 @@
 import { useLocationListener } from "@/components/store";
 import Link from "next/link";
 
-export default function UrlListener({ id }: { id: string }) {
+export function UrlListener({ id }: { id: string }) {
   const { locationState, navigate } = useLocationListener();
 
   return (

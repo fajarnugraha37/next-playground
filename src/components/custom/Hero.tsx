@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { JSX } from "react";
 
-export default function Hero(): JSX.Element {
+export function Hero(): JSX.Element {
   return (
     <>
       <Image

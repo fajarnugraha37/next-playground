@@ -7,7 +7,7 @@ interface SpinnerLoadingProps {
   className?: string;
 }
 
-export default function SpinnerLoading({
+export function SpinnerLoading({
   size = "md",
   text,
   className,

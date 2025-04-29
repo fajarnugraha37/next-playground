@@ -178,5 +178,3 @@ export const ErrorPage = ({
     </div>
   );
 };
-
-export default ErrorPage;

@@ -4,7 +4,7 @@ interface FancyLoadingProps {
   message?: string;
 }
 
-export default function FancyLoading({
+export function FancyLoading({
   appName,
   title,
   message,

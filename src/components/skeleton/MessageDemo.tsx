@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useMessage } from "../store";
 import "./MessageDemo.css";
 
-export default function MessageDemo() {
+export function MessageDemo() {
   const { showInfo, showWarning, showError, showSuccess } = useMessage();
   const router = useRouter();
 

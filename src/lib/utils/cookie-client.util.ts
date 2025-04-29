@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { serialize } from "cookie";
 import type {
   OptionsType,

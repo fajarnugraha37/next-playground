@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Next App",
-  description: "Blog by create next app",
+  title: "Next App",
+  description: "by create next app",
 };
 
-export default function BlogLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;

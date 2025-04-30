@@ -9,11 +9,11 @@ interface TransitionProps {
 export function TransitionMain({ children, className }: TransitionProps) {
   return (
     <motion.main
-      initial={{ y: 25, opacity: 0 }}
+      initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
         ease: "easeInOut",
-        duration: 1.5,
+        duration: .75,
       }}
       className={className}
     >
@@ -24,16 +24,16 @@ export function TransitionMain({ children, className }: TransitionProps) {
 
 export function TransitionDiv({ children, className }: TransitionProps) {
   return (
-    <motion.main
-      initial={{ y: 25, opacity: 0 }}
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
         ease: "easeInOut",
-        duration: 1.5,
+        duration: .75,
       }}
       className={className}
     >
       {children}
-    </motion.main>
+    </motion.div>
   );
 }

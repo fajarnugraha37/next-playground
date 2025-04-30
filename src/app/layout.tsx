@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import type React from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -6,10 +7,15 @@ import { Menu } from "lucide-react";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import "../styles/globals.css";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { TransitionMain } from "@/components/custom";
-import { CoreStoreProvider } from "@/components/store";
+import { GlobalStoreProvider } from "@/components/provider/global-store.provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,14 +39,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CoreStoreProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <TransitionMain className="flex-1">
+          <GlobalStoreProvider>
+            <TransitionMain className="flex-1">
+              <div className="flex min-h-screen flex-col">
+                <Header />
                 {children}
-              </TransitionMain>
-            </div>
-          </CoreStoreProvider>
+              </div>
+            </TransitionMain>
+          </GlobalStoreProvider>
         </ThemeProvider>
       </body>
     </html>

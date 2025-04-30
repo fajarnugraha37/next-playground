@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
 import { useStore } from "zustand";
-import { CounterStoreContext, CounterStoreSelector } from "./counter-store.provider";
+import { CounterStoreContext, CounterStoreSelector } from "../../provider/counter-store.provider";
 
 export function useCounterStore<T>(selector: CounterStoreSelector<T>): T {
   const counterStoreContext = useContext(CounterStoreContext);

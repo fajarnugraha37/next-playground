@@ -6,22 +6,31 @@ export interface LocationState {
     path: string;
     query: Record<string, any>;
   };
+}
+
+export type LocationAction = {
   getLocation: () => Pick<
     LocationState["location"],
     "hostname" | "path" | "query"
   >;
   updateLocation: () => void;
-}
+};
 
-export const createLocationSlice: StateCreator<LocationState, [], []> = (
-  set,
-  get
-) => ({
+export type LocationStore = LocationState & LocationAction;
+
+const defaultInitState: LocationState = {
   location: {
     hostname: "",
     path: "",
     query: {},
   },
+};
+
+export const createLocationSlice: StateCreator<LocationStore, [], []> = (
+  set,
+  get
+) => ({
+  ...defaultInitState,
   getLocation: () => {
     const hostname = window.location.hostname ?? "";
     const path = window.location.pathname ?? "";

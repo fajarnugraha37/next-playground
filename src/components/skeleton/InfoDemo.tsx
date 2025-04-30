@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useInfo } from "../store";
+import { useInfo } from "@/components/store";
 import "./InfoDemo.css";
 
 export function InfoDemo() {

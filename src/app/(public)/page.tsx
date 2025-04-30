@@ -28,7 +28,7 @@ function HomeComponent() {
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
         <HeroSection />
-
+    
         {/* Features Section */}
         <FeaturesSection />
 

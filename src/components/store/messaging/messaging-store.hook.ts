@@ -1,6 +1,6 @@
 "use client";
 import { useContext } from "react";
-import { MessagingStoreContext, MessagingStoreSelector } from "./messaging-store.provider";
+import { MessagingStoreContext, MessagingStoreSelector } from "../../provider/messaging-store.provider";
 import { useStore } from "zustand";
 
 export function useMessaging<T>(selector: MessagingStoreSelector<T>): T {

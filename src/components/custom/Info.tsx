@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { InfoType, useMessaging } from "../store";
+import { InfoType, useMessaging } from "@/components/store";
 
 // Tailwind classes based on info type
 const typeStyles: Record<InfoType, string> = {

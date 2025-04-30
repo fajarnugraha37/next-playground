@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { NotificationType, useMessaging } from "../store";
+import { NotificationType, useMessaging } from "@/components/store";
 
 // Tailwind classes based on notification type
 const typeStyles: Record<NotificationType, string> = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCounterStore } from "../store";
+import { useCounterStore } from "@/components/store";
 
 export const Counter = () => {
   const { count, incrementCount, decrementCount } = useCounterStore(

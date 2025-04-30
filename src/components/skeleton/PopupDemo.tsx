@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { usePopup } from "../store";
+import { usePopup } from "@/components/store";
 
 export function PopupDemo() {
   const { showInfo, showWarning, showError, showSuccess } = usePopup();

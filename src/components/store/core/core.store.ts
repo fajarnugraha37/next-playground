@@ -1,10 +1,21 @@
 import { create } from "zustand";
-import { LocationState } from "./location.slice";
-import { createLocationSlice } from "./location.slice";
+import { persist } from "zustand/middleware";
+import { LocationStore, createLocationSlice } from "../location/location.slice";
+import { AuthStore, createAuthSlice } from "../auth/auth.slice";
+import { CommonStore, createCommonSlice } from "../common/common.slice";
 
-export type CoreStore = LocationState;
+export type CoreStore = CommonStore & AuthStore & LocationStore;
 
 export const createCoreStore = () =>
-  create<CoreStore>((...a) => ({
-    ...createLocationSlice(...a),
-  }));
+  create<CoreStore>()(
+    persist(
+      (...a) => ({
+        ...createCommonSlice(...a),
+        ...createAuthSlice(...a),
+        ...createLocationSlice(...a),
+      }),
+      {
+        name: "core-store",
+      }
+    )
+  );

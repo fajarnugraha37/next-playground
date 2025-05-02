@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "by create next app",
 };
 
-export default function AuthLayout({
+export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;

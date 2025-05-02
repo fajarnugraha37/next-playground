@@ -1,7 +1,7 @@
 "use client";
 
-import { AuthGuard } from "@/components/store";
+import { TransitionDiv } from "@/components/custom";
 
 export default function AuthTemplate({ children }: { children: React.ReactNode }) {
-  return <AuthGuard>{children}</AuthGuard>;
+  return <TransitionDiv>{children}</TransitionDiv>;
 }

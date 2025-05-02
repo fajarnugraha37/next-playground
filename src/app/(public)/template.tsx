@@ -1,9 +1,11 @@
 "use client";
 
-export default function AuthTemplate({
+import { TransitionDiv } from "@/components/custom";
+
+export default function Template({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <TransitionDiv>{children}</TransitionDiv>;
 }

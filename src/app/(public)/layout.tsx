@@ -1,3 +1,4 @@
+import { TransitionDiv } from "@/components/custom";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-import { Info, Notification, Popup } from "@/components/custom";
+import { Info, Notification, Popup, TransitionMain } from "@/components/custom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -10,10 +10,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { NotificationDemo } from "@/components/skeleton";
 
-export default async function Home() {
+export default async function Page() {
   return (
     <main>
+      <NotificationDemo />
       <HomeComponent />
     </main>
   );
@@ -22,13 +24,10 @@ export default async function Home() {
 function HomeComponent() {
   return (
     <>
-      <Info />
-      <Notification />
-      <Popup />
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
         <HeroSection />
-    
+
         {/* Features Section */}
         <FeaturesSection />
 
@@ -37,7 +36,7 @@ function HomeComponent() {
 
         {/* CTA Section */}
         <CtaSection />
-        
+
         {/* Footer */}
         <Footer />
       </div>

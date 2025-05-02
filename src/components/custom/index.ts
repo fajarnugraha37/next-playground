@@ -9,5 +9,5 @@ export * from './Notification';
 export * from './Popup';
 export * from './Skeleton';
 export * from './SpinnerLoading';
-export * from './TransitionMain';
+export * from './Transition';
 export * from './UrlListener';

@@ -6,6 +6,22 @@ interface TransitionProps {
   className?: string | undefined;
 }
 
+export function TransitionBody({ children, className }: TransitionProps) {
+  return (
+    <motion.body
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        ease: "easeInOut",
+        duration: .75,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.body>
+  );
+}
+
 export function TransitionMain({ children, className }: TransitionProps) {
   return (
     <motion.main
